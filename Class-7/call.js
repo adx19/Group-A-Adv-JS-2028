@@ -1,6 +1,7 @@
 // Polyfill for call method
 
 Function.prototype.myCall = function (context, ...args) {
+  context = context || globalThis;
   context.tempFn = this;
   const result = context.tempFn(...args);
   delete context.tempFn;
@@ -13,4 +14,4 @@ let ob1 = {
   name: "Steve",
 };
 
-sayHello.myCall(ob1, "mumbai", "India");
+sayHello.myCall(null, "mumbai", "India");
