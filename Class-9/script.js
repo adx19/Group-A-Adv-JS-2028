@@ -39,10 +39,16 @@ function fetchUserComments() {
 //     console.log(result);
 //   });
 
-Promise.all([fetchUserData(), fetchUserPosts(), fetchUserComments()])
-  .then(function (results){
-    console.log(results);
-  })
-  .catch(function (err){
-    console.log(err);
+// Promise.all([fetchUserData(), fetchUserPosts(), fetchUserComments()])
+//   .then(function (results){
+//     console.log(results);
+//   })
+//   .catch(function (err){
+//     console.log(err);
+//   });
+
+Promise.any([fetchUserData(), fetchUserPosts(), fetchUserComments()]).then(function(result){
+    console.log(result)
+  }).catch(function(err){
+     console.log(err)
   });
